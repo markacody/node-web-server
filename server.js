@@ -2,6 +2,9 @@ const express = require("express");
 const hbs = require('hbs');
 const fs = require('fs');
 
+//for heroku: add the port variable with process.env, give port to app.listen, and provide start script to package.json. when done, you can start the app from the command line with npm start  
+//declare the environment variable that heroku will assign
+const port = process.env.PORT || 3000;
 //create the app server
 var app = express();
 
@@ -52,6 +55,6 @@ app.get('/', (req, res) => {
 
 
 //bind the app to a port with listen. IRL this number would be determined dynamically and stored in an environment variable. Listen stops only when told. Listen takes two arguments, the port nbr and a function that executes when the server starts.
-app.listen(3000, () => {
-    console.log("server is up");
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
